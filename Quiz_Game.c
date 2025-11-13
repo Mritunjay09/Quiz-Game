@@ -91,15 +91,15 @@ int main()
         printf("Could not load\n");
         return 1;
     }
-    printf("\t\t\tC PROGRAM QUIZ GAME\n");
+    printf("\t\t\t  C PROGRAM QUIZ GAME\n");
     printf("\n\t\t________________________________________");
 
-    printf("\n\t\t\t    WELCOME ");
-    printf("\n\t\t\t      to ");
-    printf("\n\t\t\t   THE GAME ");
+    printf("\n\t\t\t        WELCOME ");
+    printf("\n\t\t\t          to ");
+    printf("\n\t\t\t       THE GAME ");
     printf("\n\t\t________________________________________");
     printf("\n\t\t________________________________________");
-    printf("\n\t\t   BECOME A MILLIONAIRE!!!!!!!!!!!    ");
+    printf("\n\t\t      !!!!!BECOME A MILLIONAIRE!!!!!    ");
     printf("\n\t\t________________________________________");
     printf("\n\t\t________________________________________");
     printf("\n\t\t > Press S to start the game");
@@ -268,15 +268,16 @@ void show_record()
 
 void reset_score()
 {
-    system("cls");
-    float sc;
-    char nm[20];
-    FILE *f;
-    f = fopen("score.txt", "r+");
-    fscanf(f, "%s%f", &nm, &sc);
-    sc = 0;
-    fprintf(f, "%s,%.2f", nm, sc);
-    fclose(f);
+    system("clear");
+    FILE *fp = fopen("scores.txt", "w"); // Open in write mode
+    if (fp == NULL) {
+        printf("Error resetting file.\n");
+        return 1;
+    }
+
+    fclose(fp);
+    printf("Score file has been reset.\n");
+    return 0;
 }
 void edit_score(float score, char plnm[20])
 {
